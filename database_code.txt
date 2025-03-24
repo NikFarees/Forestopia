@@ -1,0 +1,136 @@
+-- speciesname Table
+CREATE TABLE speciesname (
+    NO INT(10) NOT NULL, 
+    SPECODE VARCHAR(10) NOT NULL,
+    LOCAL_NAME VARCHAR(255) NOT NULL,
+    SPEC_GR INT(10) NOT NULL,
+    ROY_CLASS VARCHAR(255) NOT NULL,
+    COMM_GR VARCHAR(255) NOT NULL,
+    DIP_NONDIP VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- users Table
+CREATE TABLE users (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    KEY (username)
+);
+
+CREATE TABLE year0_forest (
+    BlockX INT NOT NULL,
+    BlockY INT NOT NULL,
+    CoordX FLOAT NOT NULL,
+    CoordY FLOAT NOT NULL,
+    TreeNum VARCHAR(255) NOT NULL PRIMARY KEY,
+    Species VARCHAR(255) NOT NULL,
+    SpeciesGroup INT NOT NULL,
+    Diameter FLOAT NOT NULL,
+    DiameterClass INT NOT NULL,
+    Height FLOAT NOT NULL, 
+    Volume FLOAT DEFAULT NULL
+);
+
+-- Year 0 Regime 45 Table
+CREATE TABLE year0_regime45 (
+    year0_regime45_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    CutAngle FLOAT DEFAULT NULL,
+    FallAngle FLOAT DEFAULT NULL,
+    FallQuarter VARCHAR(2) DEFAULT NULL,
+    Status VARCHAR(20) DEFAULT NULL,
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
+
+-- Year 0 Regime 50 Table
+CREATE TABLE year0_regime50 (
+    year0_regime50_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    CutAngle FLOAT DEFAULT NULL,
+    FallAngle FLOAT DEFAULT NULL,
+    FallQuarter VARCHAR(2) DEFAULT NULL,
+    Status VARCHAR(20) DEFAULT NULL,
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
+
+-- Year 0 Regime 55 Table
+CREATE TABLE year0_regime55 (
+    year0_regime55_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    CutAngle FLOAT DEFAULT NULL,
+    FallAngle FLOAT DEFAULT NULL,
+    FallQuarter VARCHAR(2) DEFAULT NULL,
+    Status VARCHAR(20) DEFAULT NULL,
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
+
+-- Year 0 Regime 60 Table
+CREATE TABLE year0_regime60 (
+    year0_regime60_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    CutAngle FLOAT DEFAULT NULL,
+    FallAngle FLOAT DEFAULT NULL,
+    FallQuarter VARCHAR(2) DEFAULT NULL,
+    Status VARCHAR(20) DEFAULT NULL,
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
+
+-- Year 30 Regime 45 Table
+CREATE TABLE year30_regime45 (
+    year30_regime45_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    Diameter30 FLOAT NOT NULL,
+    DiameterClass30 INT NOT NULL,
+    Volume30 FLOAT DEFAULT NULL,
+    Status45 VARCHAR(20) DEFAULT NULL, 
+    Status50 VARCHAR(20) DEFAULT NULL, 
+    Status55 VARCHAR(20) DEFAULT NULL, 
+    Status60 VARCHAR(20) DEFAULT NULL, 
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
+
+-- Year 30 Regime 50 Table
+CREATE TABLE year30_regime50 (
+    year30_regime50_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    Diameter30 FLOAT NOT NULL,
+    DiameterClass30 INT NOT NULL,
+    Volume30 FLOAT DEFAULT NULL,
+    Status45 VARCHAR(20) DEFAULT NULL, 
+    Status50 VARCHAR(20) DEFAULT NULL, 
+    Status55 VARCHAR(20) DEFAULT NULL, 
+    Status60 VARCHAR(20) DEFAULT NULL, 
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
+
+-- Year 30 Regime 55 Table
+CREATE TABLE year30_regime55 (
+    year30_regime55_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    Diameter30 FLOAT NOT NULL,
+    DiameterClass30 INT NOT NULL,
+    Volume30 FLOAT DEFAULT NULL,
+    Status45 VARCHAR(20) DEFAULT NULL, 
+    Status50 VARCHAR(20) DEFAULT NULL, 
+    Status55 VARCHAR(20) DEFAULT NULL, 
+    Status60 VARCHAR(20) DEFAULT NULL, 
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
+
+-- Year 30 Regime 60 Table
+CREATE TABLE year30_regime60 (
+    year30_regime60_id INT AUTO_INCREMENT PRIMARY KEY,
+    TreeNum VARCHAR(255) NOT NULL,
+    Diameter30 FLOAT NOT NULL,
+    DiameterClass30 INT NOT NULL,
+    Volume30 FLOAT DEFAULT NULL,
+    Status45 VARCHAR(20) DEFAULT NULL, 
+    Status50 VARCHAR(20) DEFAULT NULL, 
+    Status55 VARCHAR(20) DEFAULT NULL, 
+    Status60 VARCHAR(20) DEFAULT NULL, 
+    FOREIGN KEY (TreeNum) REFERENCES year0_forest(TreeNum)
+);
